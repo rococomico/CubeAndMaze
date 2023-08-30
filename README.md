@@ -9,7 +9,7 @@
 
 下記リンクからプレイすることができます. プレイ中, 効果音が鳴る場面があるので, ご注意ください.
 
-[プレイする](https://kitao.github.io/pyxel/wasm/launcher/?play=rococomico.CubeAndMaze.CubeAndMaze.CubeAndMaze&Gamepad=enabled)
+[プレイする](https://kitao.github.io/pyxel/wasm/launcher/?play=rococomico.CubeAndMaze.CubeAndMaze.CubeAndMaze&gamepad=enabled)
 
 ## 操作方法
 キーボードを用いて操作します. 操作方法は以下の通りです.
