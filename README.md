@@ -1,5 +1,5 @@
 # CubeAndMaze
-レトロゲームエンジン [Pyxel](https://github.com/kitao/pyxel/blob/main/docs/README.ja.md) を用いて作成したアクションゲームです.
+レトロゲームエンジン [Pyxel](https://github.com/kitao/pyxel/blob/main/docs/README.ja.md) を用いて制作したアクションゲームです.
 
 ![pyxel-20230831-025351](https://github.com/rococomico/CubeAndMaze/assets/109841232/51605ff9-65dc-4f6f-87dd-a7a22126d106)
 ![pyxel-20230831-025745](https://github.com/rococomico/CubeAndMaze/assets/109841232/8d5b14a7-c0ef-41b4-9cd8-59a5bd0796d2)
@@ -14,13 +14,13 @@
 ## 操作方法
 キーボードを用いて操作します. 操作方法は以下の通りです.
 * 左へ移動: `Left` / `A`
-* 右へ移動: `right` / `D`
+* 右へ移動: `Right` / `D`
 * 扉に入る: `Up` / `W`
 * ジャンプ: `Enter` / `Z`
 
-また, スマートフォン, タブレットでも遊ぶことができます. ただし, キーボードと比較すると, 操作しづらくなります.
+また, スマートフォン, タブレットでも遊ぶことができます. ただし, キーボードと比較して操作がしづらくなります.
 * 左へ移動: `Left`
-* 右へ移動: `right`
+* 右へ移動: `Right`
 * 扉に入る: `Up`
 * ジャンプ: 右側の任意のボタン
 
