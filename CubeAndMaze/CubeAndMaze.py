@@ -12,6 +12,10 @@ WIDTH_PX = WIDTH_TILE * TILE_PX
 HEIGHT_PX = HEIGHT_TILE * TILE_PX
 TILE_HALF = TILE_PX // 2
 END_ROOM = (15, 7, 0)
+WALL_ID_DOOR = -1
+WALL_ID_NONE = 0
+WALL_ID_DEFAULT = 1
+WALL_ID_WALL = 2
 INIT_X_TILE = 7
 INIT_Y_TILE = 222
 INIT_Z = 0
@@ -58,7 +62,7 @@ class Mob:
     right  = 7
     u = TILE_PX
     v = 0
-    wall_id = 1
+    wall_id = WALL_ID_DEFAULT
 
     def __init__(self, x_tile: int , y_tile: int) -> None:
         self.x = TILE_PX * x_tile
@@ -110,7 +114,7 @@ class Player(Mob):
     bottom = 7
     left   = 1
     right  = 6
-    wall_id = 2
+    wall_id = WALL_ID_WALL
 
     def __init__(self, x_tile: int, y_tile: int, z: int) -> None:
         super().__init__(x_tile, y_tile)
@@ -151,7 +155,7 @@ class Player(Mob):
             self.is_right = True
         if self.is_on_floor:
             if is_up() and get_wall_id(
-                    self.x + TILE_PX // 2, self.y + TILE_PX // 2) == -1:
+                    self.x + TILE_HALF, self.y + TILE_HALF) == WALL_ID_DOOR:
                 self.z = 1 - self.z
                 return
             if is_decided():
@@ -321,25 +325,23 @@ class Chest(Mob):
 
     def __init__(self, x_tile: int, y_tile: int) -> None:
         super().__init__(x_tile, y_tile)
-        pyxel.tilemap(player.z).pset(x_tile, y_tile, (0, 0))
+        pyxel.tilemaps[player.z].pset(x_tile, y_tile, (0, 0))
         chests_pos.append((x_tile, y_tile, player.z))
 
 def get_wall_id(x: int, y: int) -> int:
-    tile = pyxel.tilemap(player.z).pget(x // TILE_PX, y // TILE_PX)
+    tile = pyxel.tilemaps[player.z].pget(x // TILE_PX, y // TILE_PX)
     if tile == (0, 3):
-        return -1
+        return WALL_ID_DOOR
     if tile == (4, 0):
-        return 1
-    if tile[1] >= 4:
-        return 0
-    if tile[0] == 0:
-        return 0
+        return WALL_ID_DEFAULT
+    if tile[0] == 0 or tile[1] >= 4:
+        return WALL_ID_NONE
     if tile[0] < 4:
-        return 2
-    return 0
+        return WALL_ID_WALL
+    return WALL_ID_NONE
 
 def append_enemy(x_tile: int, y_tile: int) -> None:
-    tile = pyxel.tilemap(player.z).pget(x_tile, y_tile)
+    tile = pyxel.tilemaps[player.z].pget(x_tile, y_tile)
     ut, vt = tile
     if ut < 4:
         return
@@ -371,7 +373,7 @@ class App:
         pyxel.init(WIDTH_PX, HEIGHT_PX, title=GAME_TITLE)
         pyxel.load(PYXRES_NAME)
         self.reset()
-        pyxel.image(0).rect(
+        pyxel.images[0].rect(
             4 * TILE_PX, 0, 4 * TILE_PX, 8 * TILE_PX, TRANSPARENT_COLOR)
         pyxel.run(self.update, self.draw)
 
@@ -395,7 +397,7 @@ class App:
         global player, chests_pos
         player = Player(INIT_X_TILE, INIT_Y_TILE, INIT_Z)
         for pos in chests_pos:
-            pyxel.tilemap(pos[2]).pset(pos[0], pos[1], (5, 0))
+            pyxel.tilemaps[pos[2]].pset(pos[0], pos[1], (5, 0))
         chests_pos = []
 
     def update(self) -> None:
