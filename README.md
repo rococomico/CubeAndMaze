@@ -1,8 +1,8 @@
 # CubeAndMaze
 レトロゲームエンジン [Pyxel](https://github.com/kitao/pyxel/blob/main/docs/README.ja.md) を用いて制作したアクションゲームです.
 
-![pyxel-20230831-025351](https://github.com/rococomico/CubeAndMaze/assets/109841232/51605ff9-65dc-4f6f-87dd-a7a22126d106)
-![pyxel-20230831-025745](https://github.com/rococomico/CubeAndMaze/assets/109841232/8d5b14a7-c0ef-41b4-9cd8-59a5bd0796d2)
+![pyxel-20240217-210219](https://github.com/rococomico/CubeAndMaze/assets/109841232/4c8730f1-08c1-426d-8426-4ec8b29504ba)
+![pyxel-20240217-195641](https://github.com/rococomico/CubeAndMaze/assets/109841232/e459dfba-c09b-4c7a-8d87-bf9bfd1e7a19)
 
 ## 遊び方
 赤いキューブを操作して, 迷路の中を進みます.
